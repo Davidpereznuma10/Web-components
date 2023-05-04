@@ -7,9 +7,20 @@ export default class myHeader extends HTMLElement{
         constructor(){
             super();
             this.attachShadow({mode:'open'});
+        };
+        handleEvent(e){
+            (e.type==='click'? this.evento(e) : '')
+            console.log();
+        };
+        evento(e){
+            window.alert('Click en el Heder')
+        };
+        connectedCallback(){
             Promise.resolve(myHeader.component()).then(html=>{
                 this.shadowRoot.innerHTML=html;
+                let header = this.shadowRoot.querySelector('button') ;
+                header.addEventListener('click',this);               
             })
-        }
+        };
 }
 customElements.define(name, myHeader)
