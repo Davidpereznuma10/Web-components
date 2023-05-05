@@ -7,8 +7,18 @@ export default class myNave extends HTMLElement{
         constructor(){
             super();
             this.attachShadow({mode:'open'});
+        };
+        handleEvent(e){
+            (e.type==='click'? this.event(e): '')
+        };
+        event(e){
+            window.alert('click on the Nav')
+        };
+        connectedCallback(){
             Promise.resolve(myNave.component()).then(html=>{
                 this.shadowRoot.innerHTML=html;
+                let nav = this.shadowRoot.querySelector('button');
+                nav.addEventListener('click', this);
             })
         }
 }
