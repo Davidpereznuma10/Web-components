@@ -9,9 +9,9 @@ export default class mySection extends HTMLElement{
             this.attachShadow({mode:'open'});
         };
         handleEvent(e){
-            (e.type==='click'? this.evento(e): '')
+            (e.type==='click'? this.event(e): '')
         };
-        evento(e){
+        event(e){
             window.alert('click on the Section')
         };
         connectedCallback(){

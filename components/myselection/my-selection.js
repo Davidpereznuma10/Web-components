@@ -7,8 +7,18 @@ export default class mySelection extends HTMLElement{
         constructor(){
             super();
             this.attachShadow({mode:'open'});
+        };
+        handleEvent(e){
+            (e.type==='click'? this.event(e):'')
+        };
+        event(e){
+            window.alert('click on the selection')
+        };
+        connectedCallback(){
             Promise.resolve(mySelection.component()).then(html=>{
                 this.shadowRoot.innerHTML=html;
+                let selection= this.shadowRoot.querySelector('button');
+                selection.addEventListener('click', this);
             })
         }
 }
