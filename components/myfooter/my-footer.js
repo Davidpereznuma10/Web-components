@@ -7,8 +7,18 @@ export default class myFooter extends HTMLElement{
         constructor(){
             super();
             this.attachShadow({mode:'open'});
+        };
+        handleEvent(e){
+            (e.type==='click'? this.event(e):'')
+        };
+        event(){
+            window.alert('click on the Footer')
+        };
+        connectedCallback(){
             Promise.resolve(myFooter.component()).then(html=>{
                 this.shadowRoot.innerHTML=html;
+                let footer = this.shadowRoot.querySelector('button');
+                footer.addEventListener('click', this )
             })
         }
 }
