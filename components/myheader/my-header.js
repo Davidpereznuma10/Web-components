@@ -10,10 +10,9 @@ export default class myHeader extends HTMLElement{
         };
         handleEvent(e){
             (e.type==='click'? this.evento(e) : '')
-            console.log();
         };
         evento(e){
-            window.alert('Click en el Heder')
+            window.alert('Click on the  Heder')
         };
         connectedCallback(){
             Promise.resolve(myHeader.component()).then(html=>{

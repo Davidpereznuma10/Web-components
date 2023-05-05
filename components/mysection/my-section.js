@@ -7,8 +7,18 @@ export default class mySection extends HTMLElement{
         constructor(){
             super();
             this.attachShadow({mode:'open'});
+        };
+        handleEvent(e){
+            (e.type==='click'? this.evento(e): '')
+        };
+        evento(e){
+            window.alert('click on the Section')
+        };
+        connectedCallback(){
             Promise.resolve(mySection.component()).then(html=>{
                 this.shadowRoot.innerHTML=html;
+                let section = this.shadowRoot.querySelector('button');
+                section.addEventListener('click', this);
             })
         }
 }
